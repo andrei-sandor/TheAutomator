@@ -47,7 +47,7 @@ def automatePasssword(generalGenerator,minimum_length,maximum_length,minimum_num
 
     score = r2_score(y, y["strength"])
 
-    
+
 
     return ("The password is " + password + "and the strength out of 3 is: " + score)
 
