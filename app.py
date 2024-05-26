@@ -43,6 +43,14 @@ def index():
 def password():
     return render_template('pass.html')
 
+@app.route('/email')
+def email():
+    return render_template('email.html')
+
+@app.route('/excel')
+def excel():
+    return render_template('excel.html')
+
 
 @app.route('/add_data')
 def add_data():
