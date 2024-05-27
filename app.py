@@ -51,6 +51,10 @@ def email():
 def excel():
     return render_template('excel.html')
 
+@app.route('/currency')
+def currency():
+    return render_template('currency.html')
+
 
 @app.route('/add_data')
 def add_data():
