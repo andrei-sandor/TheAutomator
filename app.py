@@ -56,9 +56,9 @@ def currency():
     return render_template('currency.html')
 
 
-@app.route('/add_data')
+@app.route('/form')
 def add_data():
-    return render_template('add_profile.html')
+    return render_template('form.html')
 
 
 # function to add profiles
