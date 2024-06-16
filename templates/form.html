@@ -43,17 +43,17 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<form>
+<form action="{{ url_for('add_data')}}" method="post">
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">Website Form</label>
     <div class="col-sm-10">
-      <input type="email" class="form-control" id="websiteForm" aria-describedby="emailHelp" placeholder="Enter Website Form">
+      <input class="form-control" id="websiteForm" name="websiteForm" aria-describedby="emailHelp" placeholder="Enter Website Form">
     </div>
   </div>
         <div class="form-group row">
     <label class="col-sm-2 col-form-label">Selecy Your Browser</label>
     <div class="col-sm-10">
-      <select class="form-select" aria-label="Default select example">
+      <select class="form-select" id="browser" name="browser" aria-label="Default select example">
 
   <option selected>Firefox</option>
   <option value="Chrome">Chrome</option>
@@ -67,45 +67,45 @@
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">Name</label>
     <div class="col-sm-10">
-      <input class="form-control" id="Name" placeholder="Enter Name">
+      <input class="form-control" id="name" name="name" placeholder="Enter Name">
     </div>
   </div>
   </div>
     <div class="form-group row">
     <label class="col-sm-2 col-form-label">Student Number</label>
     <div class="col-sm-10">
-      <input  class="form-control" id="stuentNumber" aria-describedby="emailHelp" placeholder="Enter Student Number">
+      <input  class="form-control" id="studentNumber" name="studentNumber" aria-describedby="emailHelp" placeholder="Enter Student Number">
     </div>
   </div>
 
     <div class="form-group row">
-    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+    <label class="col-sm-2 col-form-label">Email</label>
     <div class="col-sm-10">
-      <input type="email" class="form-control" id="emailForm" aria-describedby="emailHelp" placeholder="Enter Email">
+      <input type="email" class="form-control" id="emailForm" name="emailForm" aria-describedby="emailHelp" placeholder="Enter Email">
     </div>
   </div>
       <div class="form-group row">
     <label class="col-sm-2 col-form-label">Phone Number</label>
     <div class="col-sm-10">
-      <input  class="form-control" id="phone" placeholder=" Enter Phone Number">
+      <input  class="form-control" id="phone" name="phone" placeholder=" Enter Phone Number">
     </div>
   </div>
     <div class="form-group row">
     <label class="col-sm-2 col-form-label">Course Number</label>
     <div class="col-sm-10">
-      <input  class="form-control" id="courseNumber" placeholder="Enter Course Number">
+      <input  class="form-control" id="courseNumber" id="courseNumber" placeholder="Enter Course Number">
     </div>
   </div>
     <div class="form-group row">
     <label class="col-sm-2 col-form-label">Semester</label>
     <div class="col-sm-10">
-      <input  class="form-control" id="semester" placeholder="Enter Semester">
+      <input  class="form-control" id="semester" name="semester" placeholder="Enter Semester">
     </div>
   </div>
     <div class="form-group row">
     <label class="col-sm-2 col-form-label">Program</label>
     <div class="col-sm-10">
-      <input  class="form-control" id="Program" placeholder="Enter Program">
+      <input  class="form-control" id="program" name="program" placeholder="Enter Program">
     </div>
   </div>
   </div>
@@ -115,13 +115,35 @@
   <div class="input-group-prepend">
     <span class="input-group-text">Message</span>
   </div>
-  <textarea class="form-control" aria-label="Message"></textarea>
+  <textarea class="form-control" id="message" name="message" aria-label="Message"></textarea>
 </div>
 <br>
     <br>
 
   <div class="col-md-12 text-center">
-  <button type="button" class="btn btn-primary btn-lg">Generate Form</button>
+  <button type="submit" class="btn btn-primary btn-lg">Generate Form</button>
+
+      <br>
+      <br>
+      <h8> Stored the following info for the form {{ websiteForm }} </h8>
+      <br>
+      <h8> The browser is {{ browser }} </h8>
+      <br>
+      <h8> Your name is {{ name }} </h8>
+      <br>
+      <h8> Your student number is {{ studentNumber }} </h8>
+      <br>
+      <h8> Your email is {{ emailForm }} </h8>
+      <br>
+      <h8> Your phone is {{ phone }} </h8>
+      <br>
+      <h8> Your course number is {{ courseNumber }} </h8>
+      <br>
+      <h8> Your semester is {{ semester }} </h8>
+      <br>
+      <h8> Your program is {{ program }} </h8>
+      <br>
+      <h8> Your message is {{ message }} </h8>
   </div>
 </form>
 </body>

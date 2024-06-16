@@ -3,6 +3,8 @@ from flask.templating import render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate, migrate
 from passwordAutomator import *
+from emailAutomator import *
+from formAutomator import *
 
 app = Flask(__name__)
 app.debug = True
@@ -61,9 +63,18 @@ def password():
                                     special=special,
                                     password=password)
 
-@app.route('/email')
+@app.route('/email', methods=["POST", "GET"])
 def email():
-    return render_template('email.html')
+    staticEmail = request.form.get("staticEmail")
+    inputPassword = request.form.get("inputPassword")
+    staticEmail2 = request.form.get("staticEmail2")
+    message = request.form.get("message")
+    if staticEmail is not None and inputPassword is not None and staticEmail2 is not None:
+        automateMessage(staticEmail,inputPassword,staticEmail2)
+    return render_template('email.html', staticEmail=staticEmail,
+                               inputPassword=inputPassword,
+                               staticEmail2=staticEmail2,
+                               message=message)
 
 @app.route('/excel')
 def excel():
@@ -74,9 +85,31 @@ def currency():
     return render_template('currency.html')
 
 
-@app.route('/form')
+@app.route('/form', methods=["POST", "GET"])
 def add_data():
-    return render_template('form.html')
+    websiteForm = request.form.get("websiteForm")
+    browser = request.form.get("browser")
+    name = request.form.get("name")
+    studentNumber = request.form.get("studentNumber")
+    emailForm = request.form.get("emailForm")
+    phone = request.form.get("phone")
+    courseNumber = request.form.get("courseNumber")
+    semester = request.form.get("semester")
+    program = request.form.get("program")
+    message = request.form.get("message")
+
+    if websiteForm is not None and browser is not None and name is not None and studentNumber is not None and emailForm is not None and phone is not None and courseNumber is not None and semester is not None and program is not None:
+        form_automator(websiteForm,browser,name,studentNumber,phone,courseNumber,semester,program)
+    return render_template('form.html', websiteForm=websiteForm,
+                           browser=browser,
+                           name=name,
+                           studentNumber=studentNumber,
+                           emailForm=emailForm,
+                           phone=phone,
+                           courseNumber=courseNumber,
+                           semester=semester,
+                           program=program,
+                           message=message)
 
 
 # function to add profiles
