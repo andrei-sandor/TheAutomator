@@ -2,6 +2,7 @@ from flask import Flask, request, redirect
 from flask.templating import render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate, migrate
+from passwordAutomator import *
 
 app = Flask(__name__)
 app.debug = True
@@ -39,9 +40,26 @@ class Profile(db.Model):
 def index():
     return render_template('index.html')
 
-@app.route('/pass')
+@app.route('/pass', methods=['POST', 'GET'])
 def password():
-    return render_template('pass.html')
+    #if request.method == 'POST':
+    minlength = request.form.get("minlength")
+    maxlength = request.form.get("maxlength")
+    upper = request.form.get("upper")
+    lower = request.form.get("lower")
+    numbers = request.form.get("numbers")
+    special = request.form.get("special")
+    password = None
+
+    if minlength is not None and maxlength is not None and upper is not None and lower is not None and numbers is not None and special is not None:
+        password = automatePasssword(True,(minlength),(maxlength), (numbers),True, (upper),(lower),(special),True)
+    return render_template('pass.html',minlength=minlength,
+                                    maxlength=maxlength,
+                                    upper=upper,
+                                    lower=lower,
+                                    numbers=numbers,
+                                    special=special,
+                                    password=password)
 
 @app.route('/email')
 def email():

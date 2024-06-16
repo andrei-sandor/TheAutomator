@@ -43,38 +43,54 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<form>
+<form action="{{ url_for('password')}}" method="post">
   <div class="input-group">
     <span class="input-group-addon">Minimum Length Password</span>
-    <input id="minlength" type="text" class="form-control" name="msg" placeholder="Min Length">
+    <input id="minlength" type="text" class="form-control" name="minlength" placeholder="Min Length" value=2>
   </div>
   <div class="input-group">
     <span class="input-group-addon">Maximum Length Password</span>
-    <input id="maxlength" type="text" class="form-control" name="msg" placeholder="Max Length">
+    <input id="maxlength" type="text" class="form-control" name="maxlength" placeholder="Max Length" value=3>
   </div>
   <div class="input-group">
-    <span class="input-group-addon">Number Upper Case Chars</span>
-    <input id="upper" type="text" class="form-control" name="msg" placeholder="Upper Number">
+    <span class="input-group-addon">Minimum Number Upper Case Chars</span>
+    <input id="upper" type="text" class="form-control" name="upper" placeholder="Upper Number" value=1>
   </div>
   <div class="input-group">
-    <span class="input-group-addon">Number Lower Case Chars</span>
-    <input id="lower" type="text" class="form-control" name="msg" placeholder="lower Number">
+    <span class="input-group-addon">Minimum Number Lower Case Chars</span>
+    <input id="lower" type="text" class="form-control" name="lower" placeholder="lower Number" value=1>
   </div>
   <div class="input-group">
-    <span class="input-group-addon">Number of Numbers</span>
-    <input id="numbers" type="text" class="form-control" name="msg" placeholder="Numbers">
+    <span class="input-group-addon">Minimum Number of Numbers</span>
+    <input id="numbers" type="text" class="form-control" name="numbers" placeholder="Numbers" value=1>
   </div>
   <div class="input-group">
-    <span class="input-group-addon">Number Special Characters</span>
-    <input id="special" type="text" class="form-control" name="msg" placeholder="Special">
+    <span class="input-group-addon">Minimum Number Special Characters</span>
+    <input id="special" type="text" class="form-control" name="special" placeholder="Special" value=0>
   </div>
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Additional Info</label>
     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
   </div>
   <div class="col-md-12 text-center">
-  <button type="button" class="btn btn-primary btn-lg">Generate Password</button>
+  <button type="submit" class="btn btn-primary btn-lg">Generate Password</button>
+      <br>
+      <br>
+      <h8> The minimum length is {{ minlength }} </h8>
+      <br>
+      <h8> The maximum length is {{ maxlength }} </h8>
+      <br>
+      <h8> The minimum number of upper case chars is {{ upper }} </h8>
+      <br>
+      <h8> The minimum number of lower case chars is {{ lower }} </h8>
+      <br>
+      <h8> The minimum number of numbers is {{ numbers }} </h8>
+      <br>
+      <h8> The minimum number of special characters is {{ special }} </h8>
+      <br>
+      <h8> The generated password is {{ password }} </h8>
   </div>
 </form>
+
 </body>
 </html>
