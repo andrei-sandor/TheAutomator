@@ -5,7 +5,8 @@ from flask_migrate import Migrate, migrate
 from passwordAutomator import *
 from emailAutomator import *
 from formAutomator import *
-from excelAutomator import *
+#from excelAutomator import *
+from currencyAutomator import *
 
 app = Flask(__name__)
 app.debug = True
@@ -90,12 +91,18 @@ def excel():
 
     if formFile is not None and exampleCheck1 is not None and exampleCheck2 is not None and exampleCheck3 is not None and exampleCheck4 is not None and exampleCheck5 is not None and exampleCheck6 is not None and exampleCheck7 is not None:
         done = "Done"
-        excel_automator(formFile,exampleCheck1,exampleCheck2,exampleCheck3,exampleCheck4,exampleCheck5,exampleCheck6,False,exampleCheck7)
+        #excel_automator(formFile,exampleCheck1,exampleCheck2,exampleCheck3,exampleCheck4,exampleCheck5,exampleCheck6,False,exampleCheck7)
     return render_template('excel.html')
 
-@app.route('/currency')
+@app.route('/currency', methods=["POST", "GET"])
 def currency():
-    return render_template('currency.html')
+    fromCurrency = request.form.get("fromCurrency")
+    toCurrency = request.form.get("toCurrency")
+    result = None
+    #if fromCurrency is not None and toCurrency is not None:
+        #result = currencies_automator(fromCurrency,toCurrency)
+    return render_template('currency.html',fromCurrency=fromCurrency,
+                                         toCurrency=result)
 
 
 @app.route('/form', methods=["POST", "GET"])
